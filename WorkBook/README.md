@@ -45,7 +45,7 @@ installed.
 1.  Download Workbook template
 
 2.  Use Azure PowerShell to deploy Workbook in the same resource group
-    > as Azure Sentinel.
+    as Azure Sentinel.
 
 > $projectName = Read-Host -Prompt "Enter the same project name"
 >
