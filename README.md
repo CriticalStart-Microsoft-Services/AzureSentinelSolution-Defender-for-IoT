@@ -125,13 +125,15 @@ remediation efforts.
 
     -   Perform validation testing
 
+</br>
+
+</br>
+
 You can also submit
 to <u>i</u>[ssues](https://github.com/CriticalStart-Microsoft-Services/Azure-Sentinel---Defender-for-IoT/issues) for
 any samples or resources you would like to see here as you onboard this
 Azure Sentinel Solution. For questions and feedback, please
 contact <MicrosoftTeam@criticalstart.com>
-
-</br>
 
 </br>
 
