@@ -1,0 +1,32 @@
+CommonSecurityLog
+| where DeviceEventClassID == "Azure Defender for IoT Alert"
+| extend AdditionalExtensions = strcat(AdditionalExtensions, ";")
+| parse kind = regex flags = Ui AdditionalExtensions with * "protocol="Protocol";" *
+| parse kind = regex flags = Ui AdditionalExtensions with * "severity="severity";" *
+| parse kind = regex flags = Ui AdditionalExtensions with * "dst_ip="dst_ip";" *
+| parse kind = regex flags = Ui AdditionalExtensions with * "dst_mac="dst_mac";" *
+| parse kind = regex flags = Ui AdditionalExtensions with * "cat="cat";" *
+| parse kind = regex flags = Ui AdditionalExtensions with * "src_ip="src_ip";" *
+| parse kind = regex flags = Ui AdditionalExtensions with * "src_mac="src_mac";" *
+| extend severity = case(severity == "Critical", "High", 
+    severity == "Major", "Medium", 
+    severity == "Minor", "Low",
+    severity == "Warning", "Informational", 
+    "Informational")
+| join kind=leftouter _GetWatchlist('D4IoT_Watchlist')
+    on $left.src_ip == $right.SearchKey
+| project
+    TimeGenerated,
+    D4IoTSenorName = DeviceProduct,
+    ProductName = DeviceEventClassID,
+    Protocol,
+    Description=Message,
+    AlertName=Activity,
+    severity,
+    DestinationIP = dst_ip,
+    DestinationMACAddress= dst_mac,
+    SourceIP = src_ip,
+    SourceMACAddress= src_mac,
+    AlertCategory = cat,
+    IoTHubDevice_Name
+

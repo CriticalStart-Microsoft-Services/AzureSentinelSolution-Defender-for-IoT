@@ -1,0 +1,78 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspace": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/377b2508-2944-4048-9ca2-ef35ec310239')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/377b2508-2944-4048-9ca2-ef35ec310239')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2021-03-01-preview",
+            "properties": {
+                "displayName": "Defender For IoT - Sensor deleted",
+                "description": "A Defender IoT Sensor was either delete.",
+                "severity": "Medium",
+                "enabled": true,
+                "query": "AzureActivity\r\n| where OperationName == \"Delete IoT Sensors\"\r\n| extend IOTHub = split(tostring(parse_json(Properties).entity), '/')[8]\r\n| where ActivityStatus == \"Succeeded\"\r\n| project TimeGenerated, IOTHub, IoTSensor = Resource, ResourceGroup, OperationName, CallerIpAddress, User= Caller, CategoryValue",
+                "queryFrequency": "PT1H",
+                "queryPeriod": "PT1H",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "tactics": [
+                    "DefenseEvasion"
+                ],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "AlertPerResult"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": {
+                    "IoT_Sensor": "IoTSensor",
+                    "IoT_Hub": "IOTHub",
+                    "Operation_Name": "OperationName",
+                    "Resource_Group": "ResourceGroup",
+                    "Category": "CategoryValue"
+                },
+                "entityMappings": [
+                    {
+                        "entityType": "IP",
+                        "fieldMappings": [
+                            {
+                                "identifier": "Address",
+                                "columnName": "CallerIpAddress"
+                            }
+                        ]
+                    },
+                    {
+                        "entityType": "Account",
+                        "fieldMappings": [
+                            {
+                                "identifier": "AadUserId",
+                                "columnName": "User"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

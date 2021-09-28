@@ -1,0 +1,91 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspace": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/540a7877-7df4-4215-96af-4c0617156651')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/540a7877-7df4-4215-96af-4c0617156651')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2021-03-01-preview",
+            "properties": {
+                "displayName": "Create Incidents - Defender For IoT Alerts",
+                "description": "This analytics rule create dymanic alerts for Defender For IoT alerts received via CEF data connector.",
+                "severity": "Medium",
+                "enabled": true,
+                "query": "DefenderForIoT_CL",
+                "queryFrequency": "PT5M",
+                "queryPeriod": "PT5M",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "tactics": [
+                    "InitialAccess",
+                    "Persistence",
+                    "DefenseEvasion",
+                    "Discovery",
+                    "LateralMovement",
+                    "Exfiltration",
+                    "CommandAndControl"
+                ],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "AlertPerResult"
+                },
+                "alertDetailsOverride": {
+                    "alertDisplayNameFormat": "{{AlertName}}",
+                    "alertDescriptionFormat": "{{Description}}",
+                    "alertTacticsColumnName": null,
+                    "alertSeverityColumnName": "severity"
+                },
+                "customDetails": {
+                    "D4IoTSensorName": "D4IoTSenorName",
+                    "DestinationMacAddr": "DestinationMACAddress",
+                    "ProductName": "ProductName",
+                    "Protocol": "Protocol",
+                    "SourceMacAddr": "SourceMACAddress",
+                    "EventTime": "TimeGenerated",
+                    "IoTHubDevice": "IoTHubDevice_Name"
+                },
+                "entityMappings": [
+                    {
+                        "entityType": "IP",
+                        "fieldMappings": [
+                            {
+                                "identifier": "Address",
+                                "columnName": "DestinationIP"
+                            }
+                        ]
+                    },
+                    {
+                        "entityType": "IP",
+                        "fieldMappings": [
+                            {
+                                "identifier": "Address",
+                                "columnName": "SourceIP"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}
