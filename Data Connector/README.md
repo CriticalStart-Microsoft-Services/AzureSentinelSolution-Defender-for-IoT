@@ -106,7 +106,7 @@ To create a new forwarding rule on a IoT sensor:
 
 **1. Install Log Analytics Parser**
 
-1.  Navigate to \*\*\*Enter URL for Parser Here
+1.  Navigate to [Parser.txt file](https://github.com/CriticalStart-Microsoft-Services/AzureSentinelSolution-Defender-for-IoT/blob/main/Parser/KQLFunction.txt)
 
 2.  Copy parser query available
 
