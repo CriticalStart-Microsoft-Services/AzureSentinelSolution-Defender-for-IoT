@@ -61,7 +61,7 @@ parser installed.
 6.  After deployment navigate to Azure->Logic App->Block-Hub-Device to
     inspect the logic app created.
 
-<img src="./media/image3.png" style="width:5.50208in;height:11in" alt="Graphical user interface, application, Teams Description automatically generated" />
+<img src="./media/image3.png" style="width:7.50208in;height:12in" alt="Graphical user interface, application, Teams Description automatically generated" />
 
 <br/><br/>
 
