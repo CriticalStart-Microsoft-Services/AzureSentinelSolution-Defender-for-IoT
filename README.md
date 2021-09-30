@@ -24,7 +24,7 @@ device from further communicating with the IoT Hub service. The workbook
 offers an in-depth insight into attack trends and helps prioritize
 remediation efforts.
 
->>Click on Image to Enlarge
+>> ***Click on Image to Enlarge
 <img src="./media/image1.png" style="width:10.48958in;height:5.95444in" />
 
 </br></br>
