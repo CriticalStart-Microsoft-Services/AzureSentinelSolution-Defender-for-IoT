@@ -47,8 +47,7 @@ parser installed.
 
 1.  Download Block-Hub-Device.json file
 
-2.  Navigate to Azure-> [Deploy A Custom
-    > Template](https://portal.azure.com/#create/Microsoft.Template)
+2.  Navigate to Azure-> Deploy A Custom -> Template(https://portal.azure.com/#create/Microsoft.Template)
 
 3.  Click ‘Build your own template in the editor’ and upload json file
 
