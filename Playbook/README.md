@@ -38,9 +38,14 @@ parser installed.
 -   Please refer to the data connector content here.
 
 -   Generate SAS token using Azure CLI
+```
+  > az iot hub generate-sas-token -n "MyHubName" --policy registryReadWrite --du 31560000
+```
 
-  > az iot hub generate-sas-token -n "MyHubName" --policy registryReadWrite --du 0
-
+-   The SAS token has the following format:
+```
+SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}
+```
 <br/>
 
 ## Installation
