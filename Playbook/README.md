@@ -39,7 +39,7 @@ parser installed.
 
 -   Generate SAS token using Azure CLI
 ```
-  > az iot hub generate-sas-token -n "MyHubName" --policy registryReadWrite --du 31560000
+   az iot hub generate-sas-token -n "MyHubName" --policy registryReadWrite --du 31560000
 ```
 
 -   The SAS token has the following format:
