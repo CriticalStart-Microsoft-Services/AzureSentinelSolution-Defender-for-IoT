@@ -1,6 +1,6 @@
 # **Azure Sentinel Solution – Defender for IoT**
 
-Welcome to the Azure Sentinel repository! This repository our
+Welcome to the Azure Sentinel repository! This repository contains
 detections, exploration queries, hunting queries, workbooks, playbooks
 and much more to help you get started with using Azure Sentinel to
 secure your **IoT** environment and hunt for threats.
