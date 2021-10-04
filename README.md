@@ -140,6 +140,13 @@ contact <MicrosoftTeam@criticalstart.com>
 
 ## **About**
 
-Add Something Here
+What we do:
+**Managed Detection and Response (MDR) Services:*** CRITICALSTART is the only MDR provider committed to eliminating acceptable risk and leaving nothing to chance. That’s why our security experts built a system, platform & service that quickly detects every event, resolves every alert & stops breaches.
+Expertise beyond MDR, through our TEAMARES red and blue teams, including class-leading security practitioners (pen testers, assessors, forensic examiners) that provide hands-on support and expertise. 
+***Cybersecurity Consulting services for Microsoft:*** Delivered by highly trained and certified specialists, these services including educational workshops, assessments, design and implementation of Microsoft Security solutions.
+
+
+![image](https://user-images.githubusercontent.com/74675029/135796975-589d2cd7-4e0b-4f4d-a1db-0c875c9df68f.png)
+
 
 <img src="./media/image2.png" style="width:1.625in;height:0.30208in" />
