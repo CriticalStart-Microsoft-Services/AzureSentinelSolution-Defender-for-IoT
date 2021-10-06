@@ -5,6 +5,9 @@ detections, exploration queries, hunting queries, workbooks, playbooks
 and much more to help you get started with using Azure Sentinel to
 secure your **IoT** environment and hunt for threats.
 
+## Recording 
+Detailed Recording and demonstration can be found on youtube - https://www.youtube.com/watch?v=335h1qYvJUo
+
 ## **Solution Overview**
 
 The solution uses Azure Sentinel CEF data connector to stream alerts and
